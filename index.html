@@ -1,34 +1,94 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Laerte Invest — 50 Prompts para Investidores Inteligentes com IA</title>
-  <meta name="description" content="Baixe o pacote completo com 3 PDFs profissionais + Guia de Uso: 50 Prompts para Investidores Inteligentes com IA, por Laerte Invest.">
+  <meta name="description" content="Baixe o pacote completo com 3 PDFs profissionais + Guia de Uso: 50 Prompts para Investidores Inteligentes com IA, por Laerte Invest." />
+
+  <!-- Anti-FOUC: aplica o tema salvo ANTES de pintar a página -->
+  <script>
+    (function() {
+      try {
+        var KEY = 'li-theme';
+        var saved = localStorage.getItem(KEY);
+        if (!saved) {
+          saved = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- CSS com temas e componentes -->
+  <!-- CSS principal (seu styles.css já com as variáveis/overrides) -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Tailwind CONFIG (antes do CDN) -->
+  <!-- Tailwind CONFIG (precisa vir antes do CDN) -->
   <script src="tailwind-config.js"></script>
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Ícones Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
   <!-- QRCodeJS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    /* =======================
+       AJUSTES DE LEGIBILIDADE
+       – corrige títulos/cores fixas do Tailwind em dark/luxury
+       ======================= */
+    html[data-theme="dark"] .text-slate-900,
+    html[data-theme="dark-luxury"] .text-slate-900 { color:#e6edf5 !important; }
+
+    html[data-theme="dark"] .text-slate-800,
+    html[data-theme="dark-luxury"] .text-slate-800 { color:#dce3ec !important; }
+
+    html[data-theme="dark"] .text-slate-700,
+    html[data-theme="dark-luxury"] .text-slate-700 { color:#cbd5e1 !important; }
+
+    html[data-theme="dark"] .text-slate-600,
+    html[data-theme="dark-luxury"] .text-slate-600 { color:#9fb1c7 !important; }
+
+    /* Header usando variáveis do tema (evita bg branco no dark) */
+    .li-header {
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--surface) 70%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Garante que o botão de tema fique sempre visível */
+    .theme-toggle{ position:fixed; top:14px; right:14px; z-index:10050; border:0; background:transparent; padding:0; cursor:pointer; }
+    .theme-toggle .switch{ position:relative; width:64px; height:34px; border-radius:999px; background:#2a2a2a; box-shadow:0 2px 10px rgba(0,0,0,.25) inset; transition: background .35s, box-shadow .35s; overflow:hidden; }
+    .theme-toggle .knob{ position:absolute; left:6px; top:50%; width:26px; height:26px; border-radius:50%; background:#fff; transform: translateY(-50%); box-shadow: 0 1px 3px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.15) inset; transition: transform .35s cubic-bezier(.22,1,.36,1), background .35s, box-shadow .35s; }
+    .theme-toggle .stars{ position:absolute; inset:0; }
+    .theme-toggle .stars::before, .theme-toggle .stars::after{ content:""; position:absolute; background:#fff; border-radius:50%; opacity:.9; }
+    .theme-toggle .stars::before{ width:4px; height:4px; right:18px; top:9px; box-shadow: 10px 8px 0 0 #fff; }
+    .theme-toggle .stars::after{ width:3px; height:3px; right:10px; top:16px; }
+    .theme-toggle .cloud{ position:absolute; left:-8px; top:9px; width:42px; height:18px; border-radius:18px; background:#fff; opacity:0; transform: translateX(0) scale(.95); transition: opacity .35s, transform .35s; box-shadow: 18px -6px 0 0 #fff; }
+    .theme-toggle .gem{ position:absolute; right:10px; top:7px; width:20px; height:20px; border-radius:4px; background: linear-gradient(135deg,#82e9ff,#25a4ff); border:2px solid #111; transform: rotate(45deg) scale(.2); opacity:0; box-shadow:0 0 10px rgba(130,233,255,.8); transition: transform .35s, opacity .35s; }
+    html[data-theme="dark"] .theme-toggle .switch{ background:#1f2630; }
+    html[data-theme="dark"] .theme-toggle .knob{ transform: translateY(-50%) translateX(0); }
+    html[data-theme="dark"] .theme-toggle .cloud{ opacity:0; }
+    html[data-theme="dark"] .theme-toggle .stars{ opacity:1; }
+    html[data-theme="light"] .theme-toggle .switch{ background:#00a6ff; box-shadow: 0 0 18px rgba(0,166,255,.45) inset; }
+    html[data-theme="light"] .theme-toggle .knob{ transform: translateY(-50%) translateX(30px); background:#ffcf48; box-shadow: 0 0 10px rgba(255,207,72,.7), 0 0 0 3px rgba(255,255,255,.25) inset; }
+    html[data-theme="light"] .theme-toggle .cloud{ opacity:1; transform: translateX(4px) scale(1); }
+    html[data-theme="light"] .theme-toggle .stars{ opacity:0; }
+    html[data-theme="dark-luxury"] .theme-toggle .switch{ background:#5b32d6; box-shadow: 0 0 20px rgba(91,50,214,.55) inset; }
+    html[data-theme="dark-luxury"] .theme-toggle .knob{ transform: translateY(-50%) translateX(30px); background:#b388ff; box-shadow: 0 0 10px rgba(179,136,255,.8), 0 0 0 3px rgba(255,255,255,.2) inset; }
+    html[data-theme="dark-luxury"] .theme-toggle .gem{ opacity:1; transform: rotate(45deg) scale(1); }
+    html[data-theme="dark-luxury"] .theme-toggle .cloud{ opacity:0; }
+    html[data-theme="dark-luxury"] .theme-toggle .stars{ opacity:.3; }
+  </style>
 </head>
 
-<!-- não forço bg/text no body para não brigar com os temas -->
-<body class="font-sans">
-
-  <!-- Theme Toggle -->
+<body class="bg-white text-slate-800 font-sans">
+  <!-- Botão de tema -->
   <button class="theme-toggle" id="themeToggle" type="button" aria-label="Mudar tema" title="Mudar tema">
     <span class="switch">
       <span class="knob"></span>
@@ -39,7 +99,7 @@
   </button>
 
   <!-- NAV -->
-  <header class="w-full sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
+  <header class="li-header w-full sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <div class="h-9 w-9 rounded-xl bg-white shadow ring-1 ring-slate-200 flex items-center justify-center" aria-hidden="true">
@@ -69,13 +129,8 @@
       <div class="grid md:grid-cols-2 gap-10 items-center">
         <div>
           <span class="badge">Guia oficial • Laerte Invest</span>
-
-          <h1 class="font-display text-4xl md:text-5xl leading-tight font-extrabold mt-3">
-            50 Prompts para Investidores Inteligentes com IA
-          </h1>
-          <p class="mt-4 text-lg/relaxed text-white/90">
-            Guia prático para potencializar seus resultados com inteligência artificial — focado em aprendizado, estratégia, finanças e execução.
-          </p>
+          <h1 class="font-display text-4xl md:text-5xl leading-tight font-extrabold mt-3">50 Prompts para Investidores Inteligentes com IA</h1>
+          <p class="mt-4 text-lg/relaxed text-white/90">Guia prático para potencializar seus resultados com inteligência artificial — focado em aprendizado, estratégia, finanças e execução.</p>
 
           <div class="mt-8 flex flex-col sm:flex-row gap-3">
             <a href="#download" class="rounded-xl bg-white text-slate-900 px-5 py-3 text-sm font-semibold shadow-soft hover:opacity-90 inline-flex items-center gap-2 btn-animated">
@@ -94,6 +149,12 @@
           <div class="bg-white/10 ring-1 ring-white/20 rounded-2xl p-6 md:p-8 shadow-2xl shadow-soft">
             <div class="aspect-video rounded-xl bg-white flex items-center justify-center relative overflow-hidden">
               <svg viewBox="0 0 600 338" class="w-full h-full" role="img" aria-label="Mockup de gráfico financeiro">
+                <defs>
+                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#00AEEF"/>
+                    <stop offset="100%" stop-color="#0275D8"/>
+                  </linearGradient>
+                </defs>
                 <rect x="0" y="0" width="600" height="338" fill="#f8fbff" />
                 <g opacity="0.9">
                   <path d="M40 260 C120 180, 200 220, 280 160 S440 120, 560 140" fill="none" stroke="#0275D8" stroke-width="5" />
@@ -288,7 +349,7 @@
     </div>
   </footer>
 
-  <!-- App JS -->
+  <!-- JS da página -->
   <script src="app.js" defer></script>
 </body>
 </html>
