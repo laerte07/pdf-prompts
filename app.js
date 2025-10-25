@@ -43,19 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
     qrEl.style.cursor = 'pointer';
   }
 
-  // =====================
-  // Tema — controlador único
-  // =====================
+  // ====== THEME CYCLER (light -> dark -> dark-luxury) ======
+(function () {
   const KEY = 'li-theme';
   const html = document.documentElement;
-  const btn = document.getElementById('themeToggle');
 
   function systemPref() {
     return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
   function setTheme(mode) {
     html.setAttribute('data-theme', mode);
-    try { localStorage.setItem(KEY, mode); } catch (e) {}
+    localStorage.setItem(KEY, mode);
+    const btn = document.getElementById('themeToggle');
     if (btn) {
       const label =
         mode === 'light' ? 'Tema claro (clique para escuro)' :
@@ -71,14 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
     return 'light';
   }
 
-  // aplica tema salvo (o head já colocou algo, aqui sincronizamos e garantimos acessibilidade)
-  const saved = (() => { try { return localStorage.getItem(KEY); } catch(e){ return null; } })();
-  setTheme(saved || html.getAttribute('data-theme') || systemPref());
+  // inicializa
+  const saved = localStorage.getItem(KEY);
+  setTheme(saved || systemPref());
 
-  if (btn) {
-    btn.addEventListener('click', () => {
+  // evento de clique
+  const toggle = document.getElementById('themeToggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
       const current = html.getAttribute('data-theme') || 'light';
       setTheme(next(current));
     });
   }
-});
+})();
