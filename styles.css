@@ -60,7 +60,7 @@ html[data-theme="dark"]{
   --hero-card-bg:#334155;
 
   --border:rgba(255,255,255,.12);
-  --muted-text:#94a3b8;
+  --muted-text:#91a1b7; /* leve reforço de contraste */
   --surface:#1e293b;
   --surface-2:#334155;
   --overlay:rgba(0,0,0,.65);
@@ -126,6 +126,10 @@ html[data-theme="dark-luxury"] body{
 /* =========================================================
    FUNDAMENTOS / BASE
    ========================================================= */
+*,
+*::before,
+*::after{ box-sizing: border-box; }  /* reset global */
+
 body{
   margin:0;
   font-family: Inter, ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -165,8 +169,14 @@ body{
   padding:6px 10px;
   font-size:12px;
   font-weight:600;
-  background: color-mix(in srgb, var(--hero-card-bg) 30%, white 0%);
+
+  /* fallback + color-mix corrigido */
+  background: var(--hero-card-bg);
+  background: color-mix(in srgb, var(--hero-card-bg) 30%, white 70%);
+
   color:#fff;
+
+  /* borda ok com color-mix + transparente */
   border: 1px solid color-mix(in srgb, var(--hero-card-bg) 60%, transparent);
 }
 
@@ -188,15 +198,17 @@ body{
 
 .btn--outline{
   background: transparent; color: var(--primary-contrast);
+  /* fallback + mix */
   box-shadow: 0 0 0 2px var(--primary-400) inset;
 }
+
 .btn--neon{
   background: var(--accent-500);
-  box-shadow: 0 0 12px var(--accent-500), 0 0 24px var(--accent-500);
+  box-shadow: 0 0 10px var(--accent-500), 0 0 20px var(--accent-500);
   color: #0b1320;
 }
 .btn--neon:hover{
-  box-shadow: 0 0 18px var(--accent-500), 0 0 36px var(--accent-500);
+  box-shadow: 0 0 16px var(--accent-500), 0 0 30px var(--accent-500);
   transform: translateY(-2px);
 }
 .btn--gradient{
@@ -219,7 +231,12 @@ body{
   transition: transform .6s cubic-bezier(.23,1,.32,1), opacity .6s;
   z-index:0;
 }
-.btn-animated:hover{ transform: translateY(-1px); box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary-400) 35%, transparent); }
+.btn-animated:hover{
+  /* fallback + mix */
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.0);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary-400) 35%, transparent);
+  transform: translateY(-1px);
+}
 .btn-animated:hover::before{ transform: translateX(-50%) translateY(50%) scale(26); opacity:1; }
 
 /* =========================================================
@@ -363,3 +380,4 @@ body{
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
