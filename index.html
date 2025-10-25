@@ -4,85 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Laerte Invest — 50 Prompts para Investidores Inteligentes com IA</title>
-  <meta name="description" content="Baixe o pacote completo com 3 PDFs profissionais + Guia de Uso: 50 Prompts para Investidores Inteligentes com IA, por Laerte Invest." />
+  <meta name="description" content="Baixe o pacote completo com 3 PDFs profissionais + Guia de Uso: 50 Prompts para Investidores Inteligentes com IA, por Laerte Invest.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
+  <!-- CSS com temas e componentes -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Tailwind CONFIG (precisa vir antes do CDN). Você vai me enviar este arquivo. -->
+  <!-- Tailwind CONFIG (antes do CDN) -->
   <script src="tailwind-config.js"></script>
-
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Ícones Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- QRCodeJS (gera QR code do link) -->
+  <!-- QRCodeJS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
-<body class="bg-white text-slate-800 font-sans">
+<!-- não forço bg/text no body para não brigar com os temas -->
+<body class="font-sans">
 
   <!-- Theme Toggle -->
-<button class="theme-toggle" id="themeToggle" type="button" aria-label="Mudar tema" title="Mudar tema">
-  <span class="switch">
-    <span class="knob"></span>
-    <span class="stars"></span>
-    <span class="cloud"></span>
-    <span class="gem"></span>
-  </span>
-</button>
-
-  <script>
-  (function(){
-    const KEY = 'li-theme';
-    const html = document.documentElement;
-
-    function systemPref() {
-      return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-
-    function setTheme(mode){
-      html.setAttribute('data-theme', mode);
-      localStorage.setItem(KEY, mode);
-      // acessibilidade
-      const btn = document.getElementById('themeToggle');
-      if (btn) {
-        const label =
-          mode === 'light' ? 'Tema claro (clique para escuro)' :
-          mode === 'dark' ? 'Tema escuro (clique para luxury)' :
-          'Tema dark-luxury (clique para claro)';
-        btn.setAttribute('aria-label', label);
-        btn.setAttribute('title', label);
-      }
-    }
-
-    function next(mode){
-      if (mode === 'light') return 'dark';
-      if (mode === 'dark') return 'dark-luxury';
-      return 'light';
-    }
-
-    // inicialização
-    const saved = localStorage.getItem(KEY);
-    setTheme(saved || systemPref());
-
-    // toggle
-    const $btn = document.getElementById('themeToggle');
-    if ($btn) {
-      $btn.addEventListener('click', () => {
-        const current = html.getAttribute('data-theme') || 'light';
-        setTheme(next(current));
-      });
-    }
-  })();
-</script>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Mudar tema" title="Mudar tema">
+    <span class="switch">
+      <span class="knob"></span>
+      <span class="stars"></span>
+      <span class="cloud"></span>
+      <span class="gem"></span>
+    </span>
+  </button>
 
   <!-- NAV -->
   <header class="w-full sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
@@ -109,17 +63,19 @@
     </div>
   </header>
 
-  
   <!-- HERO -->
   <section class="grad-hero text-white relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
       <div class="grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <!-- Badge (eyebrow) inspirado no 1º CSS -->
           <span class="badge">Guia oficial • Laerte Invest</span>
 
-          <h1 class="font-display text-4xl md:text-5xl leading-tight font-extrabold mt-3">50 Prompts para Investidores Inteligentes com IA</h1>
-          <p class="mt-4 text-lg/relaxed text-white/90">Guia prático para potencializar seus resultados com inteligência artificial — focado em aprendizado, estratégia, finanças e execução.</p>
+          <h1 class="font-display text-4xl md:text-5xl leading-tight font-extrabold mt-3">
+            50 Prompts para Investidores Inteligentes com IA
+          </h1>
+          <p class="mt-4 text-lg/relaxed text-white/90">
+            Guia prático para potencializar seus resultados com inteligência artificial — focado em aprendizado, estratégia, finanças e execução.
+          </p>
 
           <div class="mt-8 flex flex-col sm:flex-row gap-3">
             <a href="#download" class="rounded-xl bg-white text-slate-900 px-5 py-3 text-sm font-semibold shadow-soft hover:opacity-90 inline-flex items-center gap-2 btn-animated">
@@ -138,12 +94,6 @@
           <div class="bg-white/10 ring-1 ring-white/20 rounded-2xl p-6 md:p-8 shadow-2xl shadow-soft">
             <div class="aspect-video rounded-xl bg-white flex items-center justify-center relative overflow-hidden">
               <svg viewBox="0 0 600 338" class="w-full h-full" role="img" aria-label="Mockup de gráfico financeiro">
-                <defs>
-                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#00AEEF"/>
-                    <stop offset="100%" stop-color="#0275D8"/>
-                  </linearGradient>
-                </defs>
                 <rect x="0" y="0" width="600" height="338" fill="#f8fbff" />
                 <g opacity="0.9">
                   <path d="M40 260 C120 180, 200 220, 280 160 S440 120, 560 140" fill="none" stroke="#0275D8" stroke-width="5" />
@@ -338,7 +288,7 @@
     </div>
   </footer>
 
-  <!-- JS da página (você vai me enviar este arquivo) -->
+  <!-- App JS -->
   <script src="app.js" defer></script>
 </body>
 </html>
