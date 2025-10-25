@@ -45,3 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
     qrEl.style.cursor = 'pointer';
   }
 });
+
+// Alterna entre temas
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+// Recupera tema salvo
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('theme') || 'light';
+  if (saved !== 'light') setTheme(saved);
+
+  // Exemplo: botão que alterna
+  const toggle = document.getElementById('themeToggle');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'dark-luxury';
+      setTheme(next);
+    });
+  }
+});
