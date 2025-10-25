@@ -1,4 +1,3 @@
-// A configuração do Tailwind precisa estar disponível ANTES do CDN.
 window.tailwind = window.tailwind || {};
 window.tailwind.config = {
   theme: {
