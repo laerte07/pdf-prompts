@@ -61,6 +61,22 @@
       border-bottom: 1px solid var(--border);
     }
 
+    <!-- Botão de tema -->
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Mudar tema" title="Mudar tema">
+  <label class="switch" aria-hidden="true">
+    <input type="checkbox" tabindex="-1" aria-hidden="true" />
+    <span class="slider">
+      <span class="star star_1"></span>
+      <span class="star star_2"></span>
+      <span class="star star_3"></span>
+      <!-- nuvem (para o light) -->
+      <svg class="cloud" viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 24c-6 0-10-3.6-10-8s4-8 9-8c1.7-4.2 6-7 11-7 7.2 0 13 5.8 13 13h2c5 0 9 3.6 9 8s-4 8-9 8H20z"/>
+      </svg>
+    </span>
+  </label>
+</button>
+
     /* Garante que o botão de tema fique sempre visível */
     .theme-toggle{ position:fixed; top:14px; right:14px; z-index:10050; border:0; background:transparent; padding:0; cursor:pointer; }
     .theme-toggle .switch{ position:relative; width:64px; height:34px; border-radius:999px; background:#2a2a2a; box-shadow:0 2px 10px rgba(0,0,0,.25) inset; transition: background .35s, box-shadow .35s; overflow:hidden; }
@@ -88,21 +104,6 @@
 </head>
 
 <body class="bg-white text-slate-800 font-sans">
-  <!-- Botão de tema -->
-  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Mudar tema" title="Mudar tema">
-  <label class="switch" aria-hidden="true">
-    <input type="checkbox" tabindex="-1" aria-hidden="true" />
-    <span class="slider">
-      <span class="star star_1"></span>
-      <span class="star star_2"></span>
-      <span class="star star_3"></span>
-      <!-- nuvem (para o light) -->
-      <svg class="cloud" viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M20 24c-6 0-10-3.6-10-8s4-8 9-8c1.7-4.2 6-7 11-7 7.2 0 13 5.8 13 13h2c5 0 9 3.6 9 8s-4 8-9 8H20z"/>
-      </svg>
-    </span>
-  </label>
-</button>
 
 
   <!-- NAV -->
