@@ -1,5 +1,5 @@
 /* =========================
-   TEMA — VARIÁVEIS BASE
+   TEMA — VARIÁVEIS BASE (LIGHT)
    ========================= */
 :root{
   /* Cores principais */
@@ -23,7 +23,7 @@
   --success:#10b981;
   --success-2:#059669;
 
-  /* Gradientes */
+  /* Gradientes (componentes) */
   --hero-grad-start:#0ea5e9;
   --hero-grad-end:#10b981;
 
@@ -33,7 +33,7 @@
   --primary-400: color-mix(in srgb, var(--primary) 60%, white);
   --accent-500: var(--success);
 
-  /* Shape & sombra */
+  /* Sombra / shape / container */
   --radius-sm:8px;
   --radius-lg:16px;
   --shadow-soft:0 10px 30px rgba(2,117,216,.20);
@@ -43,7 +43,12 @@
   --container:1240px;
   --sp-1: 8px; --sp-2: 12px; --sp-3: 16px; --sp-4: 20px; --sp-5: 24px;
   --sp-6: 28px; --sp-7: 32px; --sp-8: 40px; --sp-9: 56px; --sp-10: 72px;
+
+  /* Fundo global da página */
+  --page-bg: #ffffff;
 }
+
+html{ color-scheme: light; }
 
 /* =========================
    TEMA — DARK
@@ -53,6 +58,7 @@ html[data-theme="dark"]{
   --text:#f1f5f9;
   --muted:#64748b;
   --card:#1e293b;
+
   --primary:#005860;
   --primary-contrast:#ffffff;
 
@@ -75,13 +81,11 @@ html[data-theme="dark"]{
   --primary-600: color-mix(in srgb, var(--primary) 80%, white);
   --primary-400: color-mix(in srgb, var(--primary) 55%, white);
   --accent-500: var(--success);
-}
 
-/* fundo especial dark (não mexe em imagens ou svgs) */
-html[data-theme="dark"] body{
-  background: radial-gradient(circle at top left,#0a1124 0%,#060913 100%);
-  color: var(--text);
+  /* Fundo global da página (um ponto só) */
+  --page-bg: radial-gradient(circle at top left,#0a1124 0%,#060913 100%);
 }
+html[data-theme="dark"]{ color-scheme: dark; }
 
 /* =========================
    TEMA — DARK LUXURY
@@ -114,160 +118,33 @@ html[data-theme="dark-luxury"]{
   --primary-600: color-mix(in srgb, var(--primary) 80%, white);
   --primary-400: color-mix(in srgb, var(--primary) 55%, white);
   --accent-500:#ffd166;
-}
 
-/* fundo especial luxury */
-html[data-theme="dark-luxury"] body{
-  background: linear-gradient(160deg,#060912 0%,#0e0f1e 50%,#161933 100%);
-  color: var(--text);
+  /* Fundo global da página (um ponto só) */
+  --page-bg: linear-gradient(160deg,#060912 0%,#0e0f1e 50%,#161933 100%);
 }
+html[data-theme="dark-luxury"]{ color-scheme: dark; }
 
 /* =========================
-   BASE ESSENCIAL (seguro)
+   BASE ESSENCIAL
    ========================= */
 *,
 *::before,
 *::after{ box-sizing: border-box; }
 
-html{ color-scheme: light dark; } /* sem filtros! */
-
 body{
   margin:0;
   font-family: Inter, ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background:var(--bg);
+  background:var(--page-bg);
   color:var(--text);
+  transition: background .25s ease, color .25s ease;
 }
 
-/* Garantia de NÃO aplicar cor global em imagens/SVGs */
+/* Garante que imagens/SVGs não sofram filtros por tema */
 img, svg, picture, video, canvas{ filter:none !important; mix-blend-mode:normal !important; }
 
-/* =========================
-   THEME TOGGLE (3 estados)
-   ========================= */
-.theme-toggle{
-  position:fixed;
-  top:14px; right:14px;
-  z-index:9999;
-  border:0; background:transparent; padding:0;
-  cursor:pointer;
-}
-.theme-toggle .switch{
-  position:relative;
-  width:64px; height:34px;
-  border-radius:999px;
-  background:#2a2a2a;            /* base noite */
-  box-shadow:0 2px 10px rgba(0,0,0,.25) inset;
-  transition: background .35s ease, box-shadow .35s ease;
-  overflow:hidden;
-}
-
-/* “knob” */
-.theme-toggle .knob{
-  position:absolute;
-  left:6px; top:50%;
-  width:26px; height:26px;
-  border-radius:50%;
-  background:#fff;
-  transform: translateY(-50%);
-  box-shadow: 0 1px 3px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.15) inset;
-  transition: transform .35s cubic-bezier(.22,1,.36,1), background .35s ease, box-shadow .35s ease;
-}
-
-/* Estrelas (dark) */
-.theme-toggle .stars{
-  position:absolute; inset:0;
-}
-.theme-toggle .stars::before,
-.theme-toggle .stars::after{
-  content:"";
-  position:absolute; background:#fff; border-radius:50%;
-  opacity:.9;
-}
-.theme-toggle .stars::before{ width:4px; height:4px; right:18px; top:9px; box-shadow: 10px 8px 0 0 #fff; }
-.theme-toggle .stars::after{  width:3px; height:3px; right:10px; top:16px; }
-
-/* Nuvem (light) */
-.theme-toggle .cloud{
-  position:absolute; left:-8px; top:9px;
-  width:42px; height:18px; border-radius:18px;
-  background:#fff; opacity:0; transform: translateX(0) scale(.95);
-  transition: opacity .35s ease, transform .35s ease;
-  box-shadow: 18px -6px 0 0 #fff;  /* bolinha da nuvem */
-}
-
-/* Diamante (luxury) */
-.theme-toggle .gem{
-  position:absolute; right:10px; top:7px;
-  width:20px; height:20px; border-radius:4px;
-  background: linear-gradient(135deg,#82e9ff,#25a4ff);
-  border:2px solid #111;
-  transform: rotate(45deg) scale(.2);
-  opacity:0;
-  box-shadow:0 0 10px rgba(130,233,255,.8);
-  transition: transform .35s ease, opacity .35s ease;
-}
-
-/* ----- Estados por tema ----- */
-
-/* DARK (padrão visual do switch) */
-html[data-theme="dark"] .theme-toggle .switch{
-  background:#1f2630;
-}
-html[data-theme="dark"] .theme-toggle .knob{
-  transform: translateY(-50%) translateX(0);
-}
-/* estrelas visíveis */
-html[data-theme="dark"] .theme-toggle .stars{ opacity:1; }
-html[data-theme="dark"] .theme-toggle .cloud{ opacity:0; }
-
-/* LIGHT */
-html[data-theme="light"] .theme-toggle .switch{
-  background:#00a6ff;
-  box-shadow: 0 0 18px rgba(0,166,255,.45) inset;
-}
-html[data-theme="light"] .theme-toggle .knob{
-  transform: translateY(-50%) translateX(30px);
-  background:#ffcf48;
-  box-shadow: 0 0 10px rgba(255,207,72,.7), 0 0 0 3px rgba(255,255,255,.25) inset;
-}
-/* nuvem aparece, estrelas somem */
-html[data-theme="light"] .theme-toggle .cloud{ opacity:1; transform: translateX(4px) scale(1); }
-html[data-theme="light"] .theme-toggle .stars{ opacity:0; }
-
-/* DARK-LUXURY */
-html[data-theme="dark-luxury"] .theme-toggle .switch{
-  background:#5b32d6;
-  box-shadow: 0 0 20px rgba(91,50,214,.55) inset;
-}
-html[data-theme="dark-luxury"] .theme-toggle .knob{
-  transform: translateY(-50%) translateX(30px);
-  background:#b388ff;
-  box-shadow: 0 0 10px rgba(179,136,255,.8), 0 0 0 3px rgba(255,255,255,.2) inset;
-}
-html[data-theme="dark-luxury"] .theme-toggle .gem{
-  opacity:1; transform: rotate(45deg) scale(1);
-}
-html[data-theme="dark-luxury"] .theme-toggle .cloud{ opacity:0; }
-html[data-theme="dark-luxury"] .theme-toggle .stars{ opacity:.3; }
-
-/* (opcional) posicionamento quando o site usa cabeçalho fixo alto */
-@media (max-width:640px){
-  .theme-toggle{ top:12px; right:12px; }
-}
-
 /* =========================================================
-   FUNDAMENTOS / BASE
+   FUNDAMENTOS / LAYOUT
    ========================================================= */
-*,
-*::before,
-*::after{ box-sizing: border-box; }  /* reset global */
-
-body{
-  margin:0;
-  font-family: Inter, ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: var(--bg);
-  color: var(--text);
-}
 .font-display{ font-family: Poppins, Inter, ui-sans-serif, system-ui; }
 
 .container{
@@ -275,7 +152,6 @@ body{
   width: 100%;
   padding: 0 var(--sp-7);
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 /* =========================================================
@@ -286,7 +162,6 @@ body{
   color:#fff;
 }
 .grad-cta-dark{
-  /* usa os tokens do tema para a seção CTA escura */
   background: linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-card-bg) 100%);
   color:#fff;
 }
@@ -301,14 +176,8 @@ body{
   padding:6px 10px;
   font-size:12px;
   font-weight:600;
-
-  /* fallback + color-mix corrigido */
-  background: var(--hero-card-bg);
   background: color-mix(in srgb, var(--hero-card-bg) 30%, white 70%);
-
   color:#fff;
-
-  /* borda ok com color-mix + transparente */
   border: 1px solid color-mix(in srgb, var(--hero-card-bg) 60%, transparent);
 }
 
@@ -330,10 +199,8 @@ body{
 
 .btn--outline{
   background: transparent; color: var(--primary-contrast);
-  /* fallback + mix */
   box-shadow: 0 0 0 2px var(--primary-400) inset;
 }
-
 .btn--neon{
   background: var(--accent-500);
   box-shadow: 0 0 10px var(--accent-500), 0 0 20px var(--accent-500);
@@ -348,27 +215,15 @@ body{
   color:#0b1320;
 }
 
-/* Botão com micro-ripple (sem markup extra) */
-.btn-animated{
-  position:relative; overflow:hidden; isolation:isolate;
-  transition: box-shadow .3s ease, transform .15s ease, color .2s ease;
-}
+/* Micro-ripple (sem markup extra) */
+.btn-animated{ position:relative; overflow:hidden; isolation:isolate; transition: box-shadow .3s, transform .15s, color .2s; }
 .btn-animated::before{
-  content:"";
-  position:absolute; left:50%; bottom:0;
-  width:12px; height:12px; border-radius:999px;
-  background: var(--primary-400);
-  transform: translateX(-50%) translateY(50%) scale(0);
-  opacity:0;
+  content:""; position:absolute; left:50%; bottom:0;
+  width:12px; height:12px; border-radius:999px; background: var(--primary-400);
+  transform: translateX(-50%) translateY(50%) scale(0); opacity:0;
   transition: transform .6s cubic-bezier(.23,1,.32,1), opacity .6s;
-  z-index:0;
 }
-.btn-animated:hover{
-  /* fallback + mix */
-  box-shadow: 0 0 0 4px rgba(0,0,0,0.0);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary-400) 35%, transparent);
-  transform: translateY(-1px);
-}
+.btn-animated:hover{ box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary-400) 35%, transparent); transform: translateY(-1px); }
 .btn-animated:hover::before{ transform: translateX(-50%) translateY(50%) scale(26); opacity:1; }
 
 /* =========================================================
@@ -512,4 +367,3 @@ body{
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
-
