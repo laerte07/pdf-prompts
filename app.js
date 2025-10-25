@@ -1,7 +1,8 @@
-// ==== Laerte Invest - App base ====
-// Tudo inicializa quando o DOM estiver pronto
+// =====================
+// Inicialização geral
+// =====================
 document.addEventListener('DOMContentLoaded', () => {
-  // 1) Ícones Lucide
+  // Lucide icons
   try {
     if (window.lucide && typeof window.lucide.createIcons === 'function') {
       window.lucide.createIcons();
@@ -10,15 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn('Lucide não inicializado:', e);
   }
 
-  // 2) QR Code
+  // QR Code
   const qrEl = document.getElementById('qrcode');
   if (qrEl && window.QRCode) {
-    const url = 'https://laerte07.github.io/Projects-Laerte/';
+    const url = "https://laerte07.github.io/Projects-Laerte/";
     /* eslint-disable no-undef */
     const qr = new QRCode(qrEl, {
-      text: url, width: 160, height: 160,
-      colorDark: '#000000', colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.H
+      text: url,
+      width: 160,
+      height: 160,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
     });
     setTimeout(() => {
       const el = qrEl.querySelector('img, canvas');
@@ -39,26 +43,26 @@ document.addEventListener('DOMContentLoaded', () => {
     qrEl.style.cursor = 'pointer';
   }
 
-  // 3) Tema (light → dark → dark-luxury)
+  // =====================
+  // Tema — controlador único
+  // =====================
   const KEY = 'li-theme';
   const html = document.documentElement;
-  const toggle = document.getElementById('themeToggle');
+  const btn = document.getElementById('themeToggle');
 
   function systemPref() {
     return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
-  function labelFor(mode) {
-    if (mode === 'light') return 'Tema claro (clique para escuro)';
-    if (mode === 'dark') return 'Tema escuro (clique para luxury)';
-    return 'Tema dark-luxury (clique para claro)';
-  }
   function setTheme(mode) {
     html.setAttribute('data-theme', mode);
-    localStorage.setItem(KEY, mode);
-    if (toggle) {
-      const label = labelFor(mode);
-      toggle.setAttribute('aria-label', label);
-      toggle.setAttribute('title', label);
+    try { localStorage.setItem(KEY, mode); } catch (e) {}
+    if (btn) {
+      const label =
+        mode === 'light' ? 'Tema claro (clique para escuro)' :
+        mode === 'dark' ? 'Tema escuro (clique para luxury)' :
+        'Tema dark-luxury (clique para claro)';
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
     }
   }
   function next(mode) {
@@ -67,13 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return 'light';
   }
 
-  // Inicialização
-  const saved = localStorage.getItem(KEY);
-  setTheme(saved || systemPref());
+  // aplica tema salvo (o head já colocou algo, aqui sincronizamos e garantimos acessibilidade)
+  const saved = (() => { try { return localStorage.getItem(KEY); } catch(e){ return null; } })();
+  setTheme(saved || html.getAttribute('data-theme') || systemPref());
 
-  // Toggle
-  if (toggle) {
-    toggle.addEventListener('click', () => {
+  if (btn) {
+    btn.addEventListener('click', () => {
       const current = html.getAttribute('data-theme') || 'light';
       setTheme(next(current));
     });
