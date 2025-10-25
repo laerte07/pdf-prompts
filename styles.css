@@ -134,88 +134,95 @@ html[data-theme="dark-luxury"] .text-slate-600 { color:#9fb1c7 !important; }
   box-shadow: 0 10px 30px rgba(2, 117, 216, 0.2);
 }
 
-/* =======================================================
-   THEME TOGGLE REESTRUTURADO (3 TEMAS)
-======================================================= */
-.theme-toggle{ position:fixed; top:14px; right:14px; z-index:9999; }
+/* === THEME TOGGLE (3 temas) — versão coerente com o HTML acima === */
+.theme-toggle{
+  position:fixed;
+  top:72px;          /* abaixo do header pra não cobrir o botão de download */
+  right:24px;
+  z-index:10050;
+  border:0; background:transparent; padding:0; cursor:pointer;
+}
+@media (max-width: 768px){
+  .theme-toggle{ top:12px; right:12px; }
+}
 
-/* Base */
+/* Base do switch */
 .switch{
-  font-size:17px; position:relative; display:inline-block;
-  width:4em; height:2.2em; border-radius:30px;
+  font-size:17px;
+  position:relative;
+  display:inline-block;
+  width:4em; height:2.2em;
+  border-radius:30px;
   box-shadow:0 0 10px rgba(0,0,0,0.1);
   overflow:hidden; cursor:pointer;
 }
-
-/* Checkbox oculto */
 .switch input[type="checkbox"]{
   position:absolute; inset:0; opacity:0; pointer-events:none;
 }
-
-/* trilha */
 .slider{
-  position:absolute; inset:0; border-radius:30px;
-  background-color:#2a2a2a; transition:.4s ease;
+  position:absolute; inset:0;
+  border-radius:30px;
+  background-color:#2a2a2a; /* dark por padrão */
+  transition:0.4s ease;
 }
 
-/* botão (knob) */
+/* Botão deslizante / ícone */
 .slider::before{
-  content:""; position:absolute; height:1.2em; width:1.2em;
-  left:.5em; bottom:.5em; border-radius:50%;
-  background:#fff; transition:all .4s ease;
-  display:flex; align-items:center; justify-content:center;
-  font-size:1em;
+  content:"";
+  position:absolute;
+  height:1.2em; width:1.2em;
+  left:0.5em; bottom:0.5em;
+  border-radius:50%;
+  background:#fff;
+  transition:all .4s ease;
+  display:flex; align-items:center; justify-content:center; font-size:1em;
 }
 
-/* 🌙 dark */
-html[data-theme="dark"] .slider::before{
-  content:"☽"; font-size:1.05em; background:transparent; box-shadow:none;
-  transform: translateX(0) rotate(0deg);
-  filter: drop-shadow(0 0 4px rgba(255,255,255,.4));
-}
+/* Estrelinhas (apenas no dark) */
+.star{ background-color:#fff; border-radius:50%; position:absolute; width:5px; height:5px; opacity:1; transition:all .4s ease; }
+.star_1{ left:2.5em; top:.5em; }
+.star_2{ left:2.2em; top:1.2em; }
+.star_3{ left:3em; top:.9em; }
 
-/* ☀️ light */
-html[data-theme="light"] .slider::before{
-  content:""; font-size:1.05em; background:transparent; box-shadow:none;
-  transform: translateX(1.8em) rotate(20deg);
-  filter: drop-shadow(0 0 6px #ffcf48);
-}
-
-/* 💎 dark-luxury */
-html[data-theme="dark-luxury"] .slider::before{
-  content:"💎"; font-size:1.1em; background:none; box-shadow:none;
-  transform: translateX(1.8em) rotate(0deg);
-  filter: drop-shadow(0 0 6px rgba(179,68,255,.9));
-  transition: transform .4s ease, filter .4s ease;
-}
-
-/* estrelas e nuvem */
-.star{ background:#fff; border-radius:50%; position:absolute; width:5px; height:5px; opacity:1; transition:all .4s ease; }
-.star_1{ left:2.5em; top:.5em; } .star_2{ left:2.2em; top:1.2em; } .star_3{ left:3em; top:.9em; }
+/* Nuvem (apenas no light) */
 .cloud{ width:3.5em; position:absolute; bottom:-1.4em; left:-1.1em; opacity:0; fill:#fff; transition:all .4s ease; }
 
-/* Estados */
-html[data-theme="light"] .slider{ background-color:#00a6ff; }
-html[data-theme="light"] .slider::before{ transform:translateX(1.8em); background:#ffcf48; box-shadow:inset 0 0 0 2px #fff; }
-html[data-theme="light"] .star{ opacity:0; }
-html[data-theme="light"] .cloud{ opacity:1; }
-
+/* --- Estados por tema --- */
+/* 🌙 DARK */
 html[data-theme="dark"] .slider{ background-color:#2a2a2a; }
-html[data-theme="dark"] .slider::before{ transform:translateX(0); box-shadow: inset 8px -4px 0 0 #fff; background:#fff; }
+html[data-theme="dark"] .slider::before{
+  content:"☽"; background:transparent; box-shadow:none;
+  transform:translateX(0) rotate(0deg);
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.4));
+}
 html[data-theme="dark"] .star{ opacity:1; }
 html[data-theme="dark"] .cloud{ opacity:0; }
 
-html[data-theme="dark-luxury"] .slider{ background-color:#6c2cf9; box-shadow:0 0 10px rgba(108,44,249,.6); }
-html[data-theme="dark-luxury"] .slider::before{ transform:translateX(1.8em); background:linear-gradient(45deg,#ffb6ff,#b344ff); box-shadow:0 0 8px #b344ff; }
+/* ☀️ LIGHT */
+html[data-theme="light"] .slider{ background-color:#00a6ff; }
+html[data-theme="light"] .slider::before{
+  content:""; background:#ffcf48; box-shadow: inset 0 0 0 2px #fff;
+  transform: translateX(1.8em) rotate(20deg);
+}
+html[data-theme="light"] .star{ opacity:0; }
+html[data-theme="light"] .cloud{ opacity:1; }
+
+/* 💎 DARK-LUXURY */
+html[data-theme="dark-luxury"] .slider{
+  background-color:#6c2cf9;
+  box-shadow:0 0 10px rgba(108,44,249,0.6);
+}
+html[data-theme="dark-luxury"] .slider::before{
+  content:"💎"; background:linear-gradient(45deg,#ffb6ff,#b344ff);
+  box-shadow:0 0 8px #b344ff;
+  transform: translateX(1.8em);
+}
 html[data-theme="dark-luxury"] .star{ opacity:0; }
-html[data-theme="dark-luxury"] .cloud{ opacity:.2; filter: drop-shadow(0 0 8px #b344ff); }
+html[data-theme="dark-luxury"] .cloud{ opacity:0.2; filter: drop-shadow(0 0 8px #b344ff); }
 
-/* Textos brancos no tema light (hero do seu layout) */
-html[data-theme="light"] #li-root .li-eyebrow,
-html[data-theme="light"] #li-root .li-hero-feat span,
-html[data-theme="light"] #li-root .li-hero-card .li-price{ color:#ffffff !important; }
+/* ===== Títulos & textos: garantimos contraste por tema ===== */
+h1, h2, h3, .section__title{ color: var(--text); }
+.section__sub{ color: var(--muted-text); }
 
-/* Forçar preço branco no tema claro */
-html[data-theme="light"] #li-root .li-price,
-html[data-theme="light"] #li-root .li-hero .li-price,
-html[data-theme="light"] #li-root .li-hero-card .li-price{ color:#fff !important; }
+/* Em seções com gradiente (hero), force branco no título/sub */
+.grad-hero h1, .grad-hero .section__sub { color:#fff; }
