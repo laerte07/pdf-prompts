@@ -39,6 +39,51 @@
   </span>
 </button>
 
+  <script>
+  (function(){
+    const KEY = 'li-theme';
+    const html = document.documentElement;
+
+    function systemPref() {
+      return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setTheme(mode){
+      html.setAttribute('data-theme', mode);
+      localStorage.setItem(KEY, mode);
+      // acessibilidade
+      const btn = document.getElementById('themeToggle');
+      if (btn) {
+        const label =
+          mode === 'light' ? 'Tema claro (clique para escuro)' :
+          mode === 'dark' ? 'Tema escuro (clique para luxury)' :
+          'Tema dark-luxury (clique para claro)';
+        btn.setAttribute('aria-label', label);
+        btn.setAttribute('title', label);
+      }
+    }
+
+    function next(mode){
+      if (mode === 'light') return 'dark';
+      if (mode === 'dark') return 'dark-luxury';
+      return 'light';
+    }
+
+    // inicialização
+    const saved = localStorage.getItem(KEY);
+    setTheme(saved || systemPref());
+
+    // toggle
+    const $btn = document.getElementById('themeToggle');
+    if ($btn) {
+      $btn.addEventListener('click', () => {
+        const current = html.getAttribute('data-theme') || 'light';
+        setTheme(next(current));
+      });
+    }
+  })();
+</script>
+
   <!-- NAV -->
   <header class="w-full sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
