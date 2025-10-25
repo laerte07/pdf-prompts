@@ -8,7 +8,6 @@ window.tailwind.config = {
         display: ['Poppins','Inter','ui-sans-serif','system-ui']
       },
       colors: {
-        // Mantém compatibilidade com text-laerte-blue2 etc.
         laerte: {
           blue1: '#00AEEF',
           blue2: '#0275D8',
@@ -18,13 +17,8 @@ window.tailwind.config = {
           orange: '#F5B041',
           purple1: '#3A0CA3',
           purple2: '#7209B7',
-          neon: '#4361EE'
+          neon:   '#4361EE'
         }
-        // Alternativa plana (opcional):
-        // 'laerte-blue1': '#00AEEF',
-        // 'laerte-blue2': '#0275D8',
-        // 'laerte-purple1': '#3A0CA3',
-        // 'laerte-purple2': '#7209B7',
       },
       boxShadow: {
         soft: '0 10px 30px rgba(2, 117, 216, 0.2)'
