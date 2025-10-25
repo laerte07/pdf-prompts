@@ -16,15 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = 'https://laerte07.github.io/Projects-Laerte/';
     /* eslint-disable no-undef */
     const qr = new QRCode(qrEl, {
-      text: url,
-      width: 160,
-      height: 160,
-      colorDark: '#000000',
-      colorLight: '#ffffff',
+      text: url, width: 160, height: 160,
+      colorDark: '#000000', colorLight: '#ffffff',
       correctLevel: QRCode.CorrectLevel.H
     });
-
-    // Acessibilidade: rotula o elemento gerado (img/canvas)
     setTimeout(() => {
       const el = qrEl.querySelector('img, canvas');
       if (el) {
@@ -33,8 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         el.setAttribute('title', 'QR Code — Laerte Invest');
       }
     }, 0);
-
-    // Clique copia o link
     qrEl.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(url);
