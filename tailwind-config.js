@@ -1,3 +1,4 @@
+// A configuração do Tailwind precisa estar disponível ANTES do CDN.
 window.tailwind = window.tailwind || {};
 window.tailwind.config = {
   theme: {
@@ -16,7 +17,7 @@ window.tailwind.config = {
           orange: '#F5B041',
           purple1: '#3A0CA3',
           purple2: '#7209B7',
-          neon:   '#4361EE'
+          neon: '#4361EE'
         }
       },
       boxShadow: {
