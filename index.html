@@ -89,14 +89,21 @@
 
 <body class="bg-white text-slate-800 font-sans">
   <!-- Botão de tema -->
-  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Mudar tema" title="Mudar tema">
-    <span class="switch">
-      <span class="knob"></span>
-      <span class="stars"></span>
-      <span class="cloud"></span>
-      <span class="gem"></span>
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Mudar tema" title="Mudar tema">
+  <label class="switch" aria-hidden="true">
+    <input type="checkbox" tabindex="-1" aria-hidden="true" />
+    <span class="slider">
+      <span class="star star_1"></span>
+      <span class="star star_2"></span>
+      <span class="star star_3"></span>
+      <!-- nuvem (para o light) -->
+      <svg class="cloud" viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20 24c-6 0-10-3.6-10-8s4-8 9-8c1.7-4.2 6-7 11-7 7.2 0 13 5.8 13 13h2c5 0 9 3.6 9 8s-4 8-9 8H20z"/>
+      </svg>
     </span>
-  </button>
+  </label>
+</button>
+
 
   <!-- NAV -->
   <header class="li-header w-full sticky top-0 z-40">
