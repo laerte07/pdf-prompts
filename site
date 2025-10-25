@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Laerte Invest — 50 Prompts para Investidores Inteligentes com IA</title>
+  <meta name="description" content="Baixe o pacote completo com 3 PDFs profissionais + Guia de Uso: 50 Prompts para Investidores Inteligentes com IA, por Laerte Invest." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial'],
+            display: ['Poppins', 'Inter', 'ui-sans-serif', 'system-ui']
+          },
+          colors: {
+            laerte: {
+              blue1: '#00AEEF',
+              blue2: '#0275D8',
+              dark1: '#0A0E12',
+              dark2: '#1C1F26',
+              emerald: '#2ECC71',
+              orange: '#F5B041',
+              purple1: '#3A0CA3',
+              purple2: '#7209B7',
+              neon: '#4361EE'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(2, 117, 216, 0.2)'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Ícones Lucide -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- QRCodeJS (gera QR code do link) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    .grad-hero { background: linear-gradient(135deg, #00AEEF 0%, #0275D8 100%); }
+    .grad-cta-dark { background: linear-gradient(135deg, #0A0E12 0%, #1C1F26 100%); }
+    .card-float { transition: transform .25s ease, box-shadow .25s ease; }
+    .card-float:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.15); }
+  </style>
+</head>
+<body class="bg-white text-slate-800 font-sans">
+  <!-- NAV -->
+  <header class="w-full sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <!-- Tente usar seu logo. Se hospedar o PNG/SVG, troque o src abaixo pelo caminho do seu arquivo. -->
+        <div class="h-9 w-9 rounded-xl bg-white shadow ring-1 ring-slate-200 flex items-center justify-center">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9" stroke="#0275D8" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6 14l3-3 2 2 5-5" stroke="#2ECC71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="font-display font-semibold text-slate-900 text-lg">Laerte Invest</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#sobre" class="hover:text-slate-900 text-slate-600">Sobre</a>
+        <a href="#incluido" class="hover:text-slate-900 text-slate-600">O que está incluído</a>
+        <a href="#como-usar" class="hover:text-slate-900 text-slate-600">Como usar</a>
+        <a href="#download" class="hover:text-slate-900 text-slate-600">Download</a>
+      </nav>
+      <a href="#download" class="hidden md:inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-4 py-2 text-sm font-medium shadow hover:opacity-90">
+        <i data-lucide="download" class="w-4 h-4"></i>
+        Baixar pacote
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="grad-hero text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="font-display text-4xl md:text-5xl leading-tight font-extrabold">50 Prompts para Investidores Inteligentes com IA</h1>
+          <p class="mt-4 text-lg/relaxed text-white/90">Guia prático para potencializar seus resultados com inteligência artificial — focado em aprendizado, estratégia, finanças e execução.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#download" class="rounded-xl bg-white text-slate-900 px-5 py-3 text-sm font-semibold shadow-soft hover:opacity-90 inline-flex items-center gap-2">
+              <i data-lucide="rocket" class="w-4 h-4"></i>
+              Baixar Pacote Completo (ZIP)
+            </a>
+            <a href="#amostra" class="rounded-xl border border-white/30 text-white hover:bg-white/10 px-5 py-3 text-sm font-semibold inline-flex items-center gap-2">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+              Ver amostra gratuita
+            </a>
+          </div>
+          <div class="mt-6 text-xs/relaxed opacity-90">© Laerte Invest • Todos os direitos reservados</div>
+        </div>
+        <div class="relative">
+          <!-- Mockup ilustrativo (SVG) -->
+          <div class="bg-white/10 ring-1 ring-white/20 rounded-2xl p-6 md:p-8 shadow-2xl">
+            <div class="aspect-video rounded-xl bg-white flex items-center justify-center relative overflow-hidden">
+              <svg viewBox="0 0 600 338" class="w-full h-full">
+                <defs>
+                  <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#00AEEF"/>
+                    <stop offset="100%" stop-color="#0275D8"/>
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="600" height="338" fill="#f8fbff" />
+                <g opacity="0.9">
+                  <path d="M40 260 C120 180, 200 220, 280 160 S440 120, 560 140" fill="none" stroke="#0275D8" stroke-width="5" />
+                  <path d="M40 290 C120 210, 200 240, 280 190 S440 150, 560 170" fill="none" stroke="#2ECC71" stroke-width="3" />
+                  <circle cx="120" cy="210" r="6" fill="#2ECC71"/>
+                  <circle cx="280" cy="160" r="6" fill="#0275D8"/>
+                  <circle cx="520" cy="155" r="6" fill="#2ECC71"/>
+                </g>
+                <g opacity="0.9">
+                  <rect x="60" y="40" width="160" height="20" rx="6" fill="#e6f4ff"/>
+                  <rect x="60" y="70" width="220" height="20" rx="6" fill="#e6f4ff"/>
+                  <rect x="60" y="100" width="140" height="20" rx="6" fill="#e6f4ff"/>
+                </g>
+              </svg>
+              <div class="absolute bottom-3 right-3 text-[10px] bg-slate-900/80 text-white px-2 py-1 rounded">IA + Gráficos Financeiros</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900">Por que este guia é diferente?</h2>
+          <p class="mt-4 text-slate-600">A inteligência artificial pode transformar o seu modo de investir. Estes 50 prompts foram projetados para extrair respostas profundas, práticas e acionáveis — acelerando aprendizado, clareza e decisões com qualidade profissional.</p>
+          <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            <li class="p-4 rounded-xl border border-slate-200 card-float"><span class="font-semibold">🧠 Estratégia</span><br/>Prompts que elevam seu pensamento crítico e planejamento.</li>
+            <li class="p-4 rounded-xl border border-slate-200 card-float"><span class="font-semibold">📊 Decisão com Dados</span><br/>Estruturas que ajudam a tomar decisões consistentes.</li>
+            <li class="p-4 rounded-xl border border-slate-200 card-float"><span class="font-semibold">💼 Profissional</span><br/>Conteúdo com padrão editorial e linguagem clara.</li>
+            <li class="p-4 rounded-xl border border-slate-200 card-float"><span class="font-semibold">🚀 Evolução</span><br/>Aplicação diária em menos de 15 minutos.</li>
+          </ul>
+        </div>
+        <div class="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-2xl p-8">
+          <h3 class="font-display text-2xl font-semibold text-slate-900">O que você recebe</h3>
+          <p class="mt-3 text-slate-600">Pacote completo com 3 versões temáticas do PDF + um Guia de Uso para aplicar os prompts no seu dia a dia.</p>
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            <div class="p-4 rounded-xl bg-white border border-slate-200">
+              <div class="font-semibold">📘 Tema Azul Claro</div>
+              <div class="text-slate-600">Leve, educativo e institucional.</div>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-slate-200">
+              <div class="font-semibold">🌙 Tema Escuro</div>
+              <div class="text-slate-600">Sofisticado, tech e elegante.</div>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-slate-200">
+              <div class="font-semibold">💎 Tema Roxo</div>
+              <div class="text-slate-600">Futurista, energético, inovador.</div>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-slate-200">
+              <div class="font-semibold">🧭 Guia de Uso</div>
+              <div class="text-slate-600">Método diário, exemplos e checklist.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCLUÍDO (Cards com mockup) -->
+  <section id="incluido" class="py-16 md:py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900 text-center">O que está incluído no pacote</h2>
+      <p class="mt-3 text-slate-600 text-center max-w-3xl mx-auto">Quatro PDFs prontos, com design profissional em 16:9, QR Code ativo, rodapé de direitos autorais e identidade visual alinhada à Laerte Invest.</p>
+      <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Card Azul -->
+        <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden card-float">
+          <div class="h-36 bg-gradient-to-br from-laerte-blue1 to-laerte-blue2"></div>
+          <div class="p-5">
+            <h3 class="font-semibold">PDF — Tema Azul Claro</h3>
+            <p class="text-sm text-slate-600 mt-1">Visual leve e otimista, ideal para estudo.</p>
+            <a href="#download" class="mt-4 inline-flex items-center gap-2 text-laerte-blue2 font-semibold">Baixar <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </div>
+        </article>
+        <!-- Card Escuro -->
+        <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden card-float">
+          <div class="h-36 grad-cta-dark"></div>
+          <div class="p-5">
+            <h3 class="font-semibold">PDF — Tema Escuro</h3>
+            <p class="text-sm text-slate-600 mt-1">Sofisticação, tecnologia e foco.</p>
+            <a href="#download" class="mt-4 inline-flex items-center gap-2 text-slate-900 font-semibold">Baixar <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </div>
+        </article>
+        <!-- Card Roxo -->
+        <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden card-float">
+          <div class="h-36 bg-gradient-to-br from-laerte-purple1 to-laerte-purple2"></div>
+          <div class="p-5">
+            <h3 class="font-semibold">PDF — Tema Roxo Futurista</h3>
+            <p class="text-sm text-slate-600 mt-1">Energético, moderno e visionário.</p>
+            <a href="#download" class="mt-4 inline-flex items-center gap-2 text-laerte-purple2 font-semibold">Baixar <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </div>
+        </article>
+        <!-- Card Guia de Uso -->
+        <article class="bg-white border border-slate-200 rounded-2xl overflow-hidden card-float">
+          <div class="h-36 bg-gradient-to-br from-slate-200 to-slate-300"></div>
+          <div class="p-5">
+            <h3 class="font-semibold">Guia de Uso dos Prompts</h3>
+            <p class="text-sm text-slate-600 mt-1">Método diário, exemplos práticos e checklists.</p>
+            <a href="#download" class="mt-4 inline-flex items-center gap-2 text-slate-900 font-semibold">Baixar <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO USAR -->
+  <section id="como-usar" class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-5 gap-6 items-start">
+        <div class="md:col-span-2">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900">Como usar os prompts no dia a dia</h2>
+          <p class="mt-4 text-slate-600">Aplique a rotina <span class="font-semibold">5×10</span>: escolha 1 categoria por dia, invista 10 minutos e registre 1 ação prática. Repita semanalmente e acompanhe sua evolução.</p>
+          <ul class="mt-6 space-y-3 text-sm text-slate-700">
+            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-laerte-blue2"></i><span>Escolha um tema (Estudos, Produtividade, Escrita, Finanças, Carreira).</span></li>
+            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-laerte-blue2"></i><span>Copie o prompt, interaja com a IA e refine a resposta.</span></li>
+            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-laerte-blue2"></i><span>Anote insights e defina um passo prático para hoje.</span></li>
+            <li class="flex gap-3"><i data-lucide="check-circle-2" class="w-5 h-5 text-laerte-blue2"></i><span>Revisão semanal: o que funcionou? o que ajustar?</span></li>
+          </ul>
+        </div>
+        <div class="md:col-span-3 bg-white border border-slate-200 rounded-2xl p-6">
+          <h3 class="font-semibold text-slate-900">Exemplo de aplicação</h3>
+          <div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="font-semibold">🎯 Prompt</div>
+              <p class="mt-2 text-slate-700">“Crie uma matriz risco-retorno comparando BOVA11, IVVB11 e SMAL11 para perfil moderado.”</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+              <div class="font-semibold">✅ Ação prática</div>
+              <p class="mt-2 text-slate-700">Defina alocação alvo, regras de rebalanceamento e um gatilho de revisão mensal.</p>
+            </div>
+          </div>
+          <div class="mt-5 p-4 rounded-xl bg-slate-900 text-white text-xs flex items-center justify-between">
+            <span>Use a IA como sua parceira para investir com confiança e estratégia.</span>
+            <a href="#download" class="inline-flex items-center gap-2 bg-white text-slate-900 px-3 py-2 rounded-lg font-semibold">Baixar agora <i data-lucide="download" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD + QR -->
+  <section id="download" class="py-16 md:py-24 grad-cta-dark text-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="font-display text-3xl md:text-4xl font-bold">Baixe o pacote completo</h2>
+        <p class="mt-3 text-white/80">3 PDFs profissionais + Guia de Uso. Formato 16:9. QR Code ativo. Layout limpo e pronto para estudo ou apresentação.</p>
+        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+          <!-- Substitua os href abaixo pelos caminhos reais dos seus arquivos quando publicar -->
+          <a class="rounded-xl bg-white text-slate-900 px-5 py-3 text-sm font-semibold inline-flex items-center gap-2" href="downloads/LaerteInvest_50Prompts_IA_Pacote_Completo.zip">
+            <i data-lucide="download" class="w-4 h-4"></i> Baixar ZIP (completo)
+          </a>
+          <a class="rounded-xl border border-white/30 px-5 py-3 text-sm font-semibold inline-flex items-center gap-2" href="#amostra">
+            <i data-lucide="file" class="w-4 h-4"></i> Ver amostra (PDF)
+          </a>
+        </div>
+        <div class="mt-6 text-xs/relaxed opacity-80">© Laerte Invest • Todos os direitos reservados</div>
+      </div>
+      <div class="bg-white/5 border border-white/15 rounded-2xl p-5">
+        <div class="text-sm font-semibold mb-2">Escaneie o QR Code</div>
+        <div id="qrcode" class="bg-white p-3 rounded-lg inline-block"></div>
+        <div class="mt-3 text-xs text-white/80 break-all">Link: <a class="underline hover:no-underline" href="https://laerte07.github.io/Projects-Laerte/" target="_blank" rel="noopener">https://laerte07.github.io/Projects-Laerte/</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer class="py-10 bg-white border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3 text-slate-700">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="9" stroke="#0275D8" stroke-width="2"/>
+          <path d="M7 13l3-3 2 2 5-5" stroke="#2ECC71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-medium">Laerte Invest</span>
+      </div>
+      <div class="text-sm text-slate-500">© Laerte Invest • Todos os direitos reservados</div>
+      <div class="flex items-center gap-3 text-slate-500 text-sm">
+        <a class="hover:text-slate-900" href="https://laerte07.github.io/Projects-Laerte/" target="_blank" rel="noopener">Site oficial</a>
+        <span class="opacity-40">•</span>
+        <a class="hover:text-slate-900" href="#">LinkedIn</a>
+        <span class="opacity-40">•</span>
+        <a class="hover:text-slate-900" href="#">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Ativa ícones Lucide
+    lucide.createIcons();
+
+    // Gera QR Code
+    new QRCode(document.getElementById("qrcode"), {
+      text: "https://laerte07.github.io/Projects-Laerte/",
+      width: 160,
+      height: 160,
+      colorDark : "#000000",
+      colorLight : "#ffffff",
+      correctLevel : QRCode.CorrectLevel.H
+    });
+  </script>
+</body>
+</html>
