@@ -1,53 +1,53 @@
-/* =========================================================
+/* =========================
    TEMA — VARIÁVEIS BASE
-   ========================================================= */
-:root {
+   ========================= */
+:root{
   /* Cores principais */
-  --bg: #ffffff;
-  --text: #0c4a6e;
-  --muted: #e0f2fe;
-  --card: #f0f9ff;
-  --primary: #006779;
-  --primary-contrast: #ffffff;
+  --bg:#ffffff;
+  --text:#0c4a6e;
+  --muted:#e0f2fe;
+  --card:#f0f9ff;
+  --primary:#006779;
+  --primary-contrast:#ffffff;
 
   /* Hero / superfícies / bordas */
-  --hero-bg: #0ea5e9;
-  --hero-card-bg: #0284c7;
-  --border: rgba(0,0,0,.08);
-  --muted-text: #64748b;
-  --surface: #f8fafc;
-  --surface-2: #f1f5f9;
-  --overlay: rgba(0,0,0,.45);
+  --hero-bg:#0ea5e9;
+  --hero-card-bg:#0284c7;
+  --border:rgba(0,0,0,.08);
+  --muted-text:#64748b;
+  --surface:#f8fafc;
+  --surface-2:#f1f5f9;
+  --overlay:rgba(0,0,0,.45);
 
   /* Destaques */
-  --success: #10b981;
-  --success-2: #059669;
+  --success:#10b981;
+  --success-2:#059669;
 
   /* Gradientes */
-  --hero-grad-start: #0ea5e9;
-  --hero-grad-end: #10b981;
+  --hero-grad-start:#0ea5e9;
+  --hero-grad-end:#10b981;
 
-  /* Escalas derivadas (compat com CSS legado) */
+  /* Derivadas */
   --primary-700: var(--primary);
   --primary-600: color-mix(in srgb, var(--primary) 85%, white);
   --primary-400: color-mix(in srgb, var(--primary) 60%, white);
   --accent-500: var(--success);
 
-  /* Raios / sombras / espaçamentos */
-  --radius-sm: 8px;
-  --radius-lg: 16px;
-  --shadow-soft: 0 10px 30px rgba(2,117,216,.20);
-  --shadow-card: 0 8px 20px rgba(0,0,0,.06);
-  --shadow-card-lg: 0 10px 24px rgba(0,0,0,.15);
+  /* Shape & sombra */
+  --radius-sm:8px;
+  --radius-lg:16px;
+  --shadow-soft:0 10px 30px rgba(2,117,216,.20);
+  --shadow-card:0 8px 20px rgba(0,0,0,.06);
+  --shadow-card-lg:0 10px 24px rgba(0,0,0,.15);
 
-  --container: 1240px;
+  --container:1240px;
   --sp-1: 8px; --sp-2: 12px; --sp-3: 16px; --sp-4: 20px; --sp-5: 24px;
   --sp-6: 28px; --sp-7: 32px; --sp-8: 40px; --sp-9: 56px; --sp-10: 72px;
 }
 
-/* =========================================================
+/* =========================
    TEMA — DARK
-   ========================================================= */
+   ========================= */
 html[data-theme="dark"]{
   --bg:#00000b;
   --text:#f1f5f9;
@@ -60,7 +60,7 @@ html[data-theme="dark"]{
   --hero-card-bg:#334155;
 
   --border:rgba(255,255,255,.12);
-  --muted-text:#91a1b7; /* leve reforço de contraste */
+  --muted-text:#91a1b7;
   --surface:#1e293b;
   --surface-2:#334155;
   --overlay:rgba(0,0,0,.65);
@@ -71,22 +71,21 @@ html[data-theme="dark"]{
   --hero-grad-start:#1e293b;
   --hero-grad-end:#f97316;
 
-  /* Derivadas */
   --primary-700: var(--primary);
   --primary-600: color-mix(in srgb, var(--primary) 80%, white);
   --primary-400: color-mix(in srgb, var(--primary) 55%, white);
   --accent-500: var(--success);
 }
 
-/* fundo especial aplicado quando dark */
+/* fundo especial dark (não mexe em imagens ou svgs) */
 html[data-theme="dark"] body{
   background: radial-gradient(circle at top left,#0a1124 0%,#060913 100%);
   color: var(--text);
 }
 
-/* =========================================================
+/* =========================
    TEMA — DARK LUXURY
-   ========================================================= */
+   ========================= */
 html[data-theme="dark-luxury"]{
   --bg:#0a0a0f;
   --text:#f8fafc;
@@ -114,13 +113,146 @@ html[data-theme="dark-luxury"]{
   --primary-700: var(--primary);
   --primary-600: color-mix(in srgb, var(--primary) 80%, white);
   --primary-400: color-mix(in srgb, var(--primary) 55%, white);
-  --accent-500: #ffd166; /* toque luxury dourado */
+  --accent-500:#ffd166;
 }
 
 /* fundo especial luxury */
 html[data-theme="dark-luxury"] body{
   background: linear-gradient(160deg,#060912 0%,#0e0f1e 50%,#161933 100%);
   color: var(--text);
+}
+
+/* =========================
+   BASE ESSENCIAL (seguro)
+   ========================= */
+*,
+*::before,
+*::after{ box-sizing: border-box; }
+
+html{ color-scheme: light dark; } /* sem filtros! */
+
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* Garantia de NÃO aplicar cor global em imagens/SVGs */
+img, svg, picture, video, canvas{ filter:none !important; mix-blend-mode:normal !important; }
+
+/* =========================
+   THEME TOGGLE (3 estados)
+   ========================= */
+.theme-toggle{
+  position:fixed;
+  top:14px; right:14px;
+  z-index:9999;
+  border:0; background:transparent; padding:0;
+  cursor:pointer;
+}
+.theme-toggle .switch{
+  position:relative;
+  width:64px; height:34px;
+  border-radius:999px;
+  background:#2a2a2a;            /* base noite */
+  box-shadow:0 2px 10px rgba(0,0,0,.25) inset;
+  transition: background .35s ease, box-shadow .35s ease;
+  overflow:hidden;
+}
+
+/* “knob” */
+.theme-toggle .knob{
+  position:absolute;
+  left:6px; top:50%;
+  width:26px; height:26px;
+  border-radius:50%;
+  background:#fff;
+  transform: translateY(-50%);
+  box-shadow: 0 1px 3px rgba(0,0,0,.35), 0 0 0 3px rgba(255,255,255,.15) inset;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), background .35s ease, box-shadow .35s ease;
+}
+
+/* Estrelas (dark) */
+.theme-toggle .stars{
+  position:absolute; inset:0;
+}
+.theme-toggle .stars::before,
+.theme-toggle .stars::after{
+  content:"";
+  position:absolute; background:#fff; border-radius:50%;
+  opacity:.9;
+}
+.theme-toggle .stars::before{ width:4px; height:4px; right:18px; top:9px; box-shadow: 10px 8px 0 0 #fff; }
+.theme-toggle .stars::after{  width:3px; height:3px; right:10px; top:16px; }
+
+/* Nuvem (light) */
+.theme-toggle .cloud{
+  position:absolute; left:-8px; top:9px;
+  width:42px; height:18px; border-radius:18px;
+  background:#fff; opacity:0; transform: translateX(0) scale(.95);
+  transition: opacity .35s ease, transform .35s ease;
+  box-shadow: 18px -6px 0 0 #fff;  /* bolinha da nuvem */
+}
+
+/* Diamante (luxury) */
+.theme-toggle .gem{
+  position:absolute; right:10px; top:7px;
+  width:20px; height:20px; border-radius:4px;
+  background: linear-gradient(135deg,#82e9ff,#25a4ff);
+  border:2px solid #111;
+  transform: rotate(45deg) scale(.2);
+  opacity:0;
+  box-shadow:0 0 10px rgba(130,233,255,.8);
+  transition: transform .35s ease, opacity .35s ease;
+}
+
+/* ----- Estados por tema ----- */
+
+/* DARK (padrão visual do switch) */
+html[data-theme="dark"] .theme-toggle .switch{
+  background:#1f2630;
+}
+html[data-theme="dark"] .theme-toggle .knob{
+  transform: translateY(-50%) translateX(0);
+}
+/* estrelas visíveis */
+html[data-theme="dark"] .theme-toggle .stars{ opacity:1; }
+html[data-theme="dark"] .theme-toggle .cloud{ opacity:0; }
+
+/* LIGHT */
+html[data-theme="light"] .theme-toggle .switch{
+  background:#00a6ff;
+  box-shadow: 0 0 18px rgba(0,166,255,.45) inset;
+}
+html[data-theme="light"] .theme-toggle .knob{
+  transform: translateY(-50%) translateX(30px);
+  background:#ffcf48;
+  box-shadow: 0 0 10px rgba(255,207,72,.7), 0 0 0 3px rgba(255,255,255,.25) inset;
+}
+/* nuvem aparece, estrelas somem */
+html[data-theme="light"] .theme-toggle .cloud{ opacity:1; transform: translateX(4px) scale(1); }
+html[data-theme="light"] .theme-toggle .stars{ opacity:0; }
+
+/* DARK-LUXURY */
+html[data-theme="dark-luxury"] .theme-toggle .switch{
+  background:#5b32d6;
+  box-shadow: 0 0 20px rgba(91,50,214,.55) inset;
+}
+html[data-theme="dark-luxury"] .theme-toggle .knob{
+  transform: translateY(-50%) translateX(30px);
+  background:#b388ff;
+  box-shadow: 0 0 10px rgba(179,136,255,.8), 0 0 0 3px rgba(255,255,255,.2) inset;
+}
+html[data-theme="dark-luxury"] .theme-toggle .gem{
+  opacity:1; transform: rotate(45deg) scale(1);
+}
+html[data-theme="dark-luxury"] .theme-toggle .cloud{ opacity:0; }
+html[data-theme="dark-luxury"] .theme-toggle .stars{ opacity:.3; }
+
+/* (opcional) posicionamento quando o site usa cabeçalho fixo alto */
+@media (max-width:640px){
+  .theme-toggle{ top:12px; right:12px; }
 }
 
 /* =========================================================
